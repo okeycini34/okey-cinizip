@@ -1,25 +1,70 @@
-<form id="registerForm">
-  <input type="text" id="username" placeholder="Kullanıcı Adı" required>
-  <input type="email" id="email" placeholder="Email" required>
-  <input type="password" id="password" placeholder="Şifre" required>
-  <input type="password" id="confirmPassword" placeholder="Şifre Tekrar" required>
-  <button type="submit">Kayıt Ol</button>
-</form>
-
-<script src="/js/register.js"></script>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Kayıt Ol</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kayıt Ol - OKEY CİNİ</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #b3e5fc; /* şeker mavisi */
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .register-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    .register-box h2 {
+      margin-bottom: 20px;
+      color: #0d47a1;
+    }
+
+    .register-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .register-box button {
+      background-color: #0d47a1;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .register-box button:hover {
+      background-color: #1565c0;
+    }
+  </style>
 </head>
 <body>
-  <h1>Kayıt Ol</h1>
-  <form action="/lobby" method="GET">
-    <input type="text" placeholder="Kullanıcı Adı" required />
-    <input type="password" placeholder="Şifre" required />
-    <button type="submit">Kayıt Ol</button>
-  </form>
-  <a href="/">Zaten hesabım var</a>
+  <div class="register-box">
+    <h2>Kayıt Ol</h2>
+    <form id="registerForm">
+      <input type="text" placeholder="Kullanıcı Adı" required />
+      <input type="email" placeholder="E-posta" required />
+      <input type="password" placeholder="Şifre" required />
+      <input type="password" placeholder="Şifreyi Tekrarla" required />
+      <button type="submit">Kayıt Ol</button>
+    </form>
+  </div>
+
+  <script src="register.js"></script>
 </body>
 </html>
