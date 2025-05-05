@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Okey Cini - Giriş / Kayıt</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="form-container">
-      <h2 id="form-title">Giriş Yap</h2>
-      <form id="login-form" onsubmit="return false;">
-        <input type="text" placeholder="Kullanıcı Adı" required />
-        <input type="password" placeholder="Şifre" required />
-        <button type="submit">Giriş Yap</button>
-      </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Okey Cini - Giriş</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Okey Cini</h1>
+    <p>Hesabınıza giriş yapın</p>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Kullanıcı Adı" required />
+      <input type="password" id="password" placeholder="Şifre" required />
+      <button type="submit">Giriş Yap</button>
+    </form>
+    <p>Hesabınız yok mu? <a href="register.html">Kayıt Ol</a></p>
+  </div>
 
-      <form id="register-form" style="display: none;" onsubmit="return false;">
-        <input type="text" placeholder="Kullanıcı Adı" required />
-        <input type="email" placeholder="E-posta" required />
-        <input type="password" placeholder="Şifre" required />
-        <input type="password" placeholder="Şifre Tekrar" required />
-        <button type="submit">Kayıt Ol</button>
-      </form>
-
-      <p id="toggle-text">Hesabınız yok mu? <a href="#" onclick="toggleForm()">Kayıt Ol</a></p>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
+  <script src="login.js"></script>
+</body>
 </html>

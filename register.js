@@ -1,18 +1,30 @@
-document.getElementById('registerForm').addEventListener('submit', function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("register-form");
 
-  const username = document.getElementById('username').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const confirm = document.getElementById('confirmPassword').value;
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-  if (password !== confirm) {
-    alert('Şifreler eşleşmiyor!');
-    return;
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+
+      if (!username || !email || !password || !confirmPassword) {
+        alert("Lütfen tüm alanları doldurun.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Şifreler uyuşmuyor.");
+        return;
+      }
+
+      // Basit örnek: kullanıcıyı kaydetmiş gibi yap ve yönlendir
+      localStorage.setItem("registeredUser", JSON.stringify({ username, email, password }));
+      alert("Kayıt başarılı! Giriş ekranına yönlendiriliyorsunuz...");
+
+      window.location.href = "index.html"; // İstersen doğrudan lobby.html'e de yönlendirebiliriz
+    });
   }
-
-  alert('Kayıt başarılı!');
-
-  // Giriş başarılıysa lobiye yönlendir
-  window.location.href = '/lobby';
 });
