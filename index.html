@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Okey Masası</title>
-  <link rel="stylesheet" href="/style.css" />
-</head>
-<body>
-  <div class="masa">
-    <div class="rack">
-      <!-- Taşlar 2 katlı olarak gelecektir -->
-      <div class="tile-row">
-        <div class="tile" draggable="true">1🟥</div>
-        <div class="tile" draggable="true">2🟥</div>
-        <div class="tile" draggable="true">3🟥</div>
-        <!-- Diğer taşlar... -->
-      </div>
-      <div class="tile-row">
-        <div class="tile" draggable="true">10🟦</div>
-        <div class="tile" draggable="true">11🟦</div>
-        <div class="tile" draggable="true">12🟦</div>
-      </div>
-    </div>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Okey Cini - Giriş / Kayıt</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="form-container">
+      <h2 id="form-title">Giriş Yap</h2>
+      <form id="login-form" onsubmit="return false;">
+        <input type="text" placeholder="Kullanıcı Adı" required />
+        <input type="password" placeholder="Şifre" required />
+        <button type="submit">Giriş Yap</button>
+      </form>
 
-  <script src="/script.js"></script>
-</body>
+      <form id="register-form" style="display: none;" onsubmit="return false;">
+        <input type="text" placeholder="Kullanıcı Adı" required />
+        <input type="email" placeholder="E-posta" required />
+        <input type="password" placeholder="Şifre" required />
+        <input type="password" placeholder="Şifre Tekrar" required />
+        <button type="submit">Kayıt Ol</button>
+      </form>
+
+      <p id="toggle-text">Hesabınız yok mu? <a href="#" onclick="toggleForm()">Kayıt Ol</a></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

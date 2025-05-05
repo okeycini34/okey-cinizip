@@ -1,26 +1,20 @@
-document.querySelectorAll('.tile').forEach(tile => {
-  tile.addEventListener('dragstart', e => {
-    e.dataTransfer.setData('text/plain', tile.outerHTML);
-    tile.classList.add('dragging');
-  });
+function toggleForm() {
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
+  const formTitle = document.getElementById("form-title");
+  const toggleText = document.getElementById("toggle-text");
 
-  tile.addEventListener('dragend', e => {
-    tile.classList.remove('dragging');
-  });
-});
-
-document.querySelectorAll('.tile-row').forEach(row => {
-  row.addEventListener('dragover', e => {
-    e.preventDefault();
-  });
-
-  row.addEventListener('drop', e => {
-    e.preventDefault();
-    const data = e.dataTransfer.getData('text/plain');
-    const temp = document.createElement('div');
-    temp.innerHTML = data;
-    const dropped = temp.firstChild;
-    dropped.classList.remove('dragging');
-    e.target.appendChild(dropped);
-  });
-});
+  if (loginForm.style.display === "none") {
+    // Giriş formuna geç
+    loginForm.style.display = "block";
+    registerForm.style.display = "none";
+    formTitle.textContent = "Giriş Yap";
+    toggleText.innerHTML = `Hesabınız yok mu? <a href="#" onclick="toggleForm()">Kayıt Ol</a>`;
+  } else {
+    // Kayıt formuna geç
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+    formTitle.textContent = "Kayıt Ol";
+    toggleText.innerHTML = `Zaten hesabınız var mı? <a href="#" onclick="toggleForm()">Giriş Yap</a>`;
+  }
+}
