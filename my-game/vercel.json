@@ -1,7 +1,6 @@
 {
     "rewrites": [
-      { "source": "/", "destination": "/my-game/index.html" },
-      { "source": "/login", "destination": "/my-game/login.html" },
-      { "source": "/register", "destination": "/my-game/register.html" }
+      { "source": "/", "destination": "/my-game/index.html" }
     ]
   }
+  
