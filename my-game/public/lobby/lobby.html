@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>OKEY CİNİ - Lobi</title>
+  <link rel="stylesheet" href="lobby.css" />
+</head>
+<body>
+  <div class="top-bar">
+    <div class="left-buttons">
+      <button class="top-btn">Cüzdan</button>
+      <button class="top-btn">Profil</button>
+    </div>
+    <div class="title">Okey Cinine Hoş Geldiniz</div>
+    <div class="right-buttons">
+      <button class="top-btn" onclick="window.location.href='/'">Geri Çık</button>
+    </div>
+  </div>
+
+  <div class="welcome-message" id="welcomeUser">Hoş geldin, oyuncu!</div>
+
+  <div class="game-options">
+    <button class="game-button" onclick="goToGame('klasikokey.html')">
+      <img src="/images/klasikokey.png" alt="Klasik Okey" />
+    </button>
+    <button class="game-button" onclick="goToGame('101okey.html')">
+      <img src="/images/101.png" alt="101 Okey" />
+    </button>
+    <button class="game-button" onclick="goToGame('barbut.html')">
+      <img src="/images/barbut.png" alt="Barbut" />
+    </button>
+  </div>
+
+  <div class="slogans">
+    <div class="slogan-box">%100 Güvenli ve Hızlı Para Çekme</div>
+    <div class="slogan-box">Gerçek Rakiplerle Gerçek Okey Keyfi</div>
+    <div class="slogan-box">7/24 Canlı Destek ve Güvenlik</div>
+  </div>
+
+  <script>
+    const username = localStorage.getItem("username");
+    if (username) {
+      document.getElementById("welcomeUser").textContent = `Hoş geldin, ${username}`;
+    }
+
+    function goToGame(page) {
+      window.location.href = 'games/' + page;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  background: url('/assets/masa/okey-masa.png') no-repeat center center;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+
+.masa {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+.ortaya-atilan-taslar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px dashed #000;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 5px;
+}
+
+.istaka-alani {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.istaka {
+  width: 950px;
+  height: 120px;
+  background: url('/assets/istaka/istaka.png') no-repeat center;
+  background-size: contain;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  transform: translateY(-4mm); /* 4 mm yukarı */
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+  min-height: 55px;
+}
+
+.tile-wrapper {
+  cursor: grab;
+}
+
+.tile {
+  width: 35px;
+  height: 50px;
+  user-select: none;
+}
+
+.butonlar {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.butonlar button {
+  padding: 10px 14px;
+  font-size: 14px;
+  background-color: #2c6cbf;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

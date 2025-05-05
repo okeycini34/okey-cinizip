@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Klasik Okey - OKEY CİNİ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #2e7d32; /* yeşil zemin */
+    }
+    .top-bar {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar button {
+      background-color: #0059b3;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .content {
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    .header-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .action-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #1b5e20;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .amount-options {
+      margin-top: 10px;
+    }
+    .amount-options button {
+      margin: 5px;
+      padding: 8px 16px;
+      font-size: 14px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div>
+      <button onclick="window.location.href='/'">Ana Sayfa</button>
+      <button onclick="window.location.href='../lobby.html'">Lobiye Dön</button>
+    </div>
+    <div id="username"></div>
+  </div>
+
+  <div class="content">
+    <div class="header-line">
+      <h2>Klasik Okey</h2>
+      <div class="action-buttons">
+        <button onclick="selectAction('hizli')">Hızlı Oyna</button>
+        <button onclick="selectAction('masa')">Masa Aç</button>
+      </div>
+    </div>
+
+    <div class="amount-options" id="amountOptions" style="display:none;">
+      <p>Lütfen bir miktar seçin:</p>
+      <button onclick="selectAmount(250)">250 TL</button>
+      <button onclick="selectAmount(500)">500 TL</button>
+      <button onclick="selectAmount(1000)">1000 TL</button>
+      <button onclick="selectAmount(2000)">2000 TL</button>
+    </div>
+
+    <p>Oyun burada başlayacak...</p>
+  </div>
+
+  <script>
+    const username = localStorage.getItem("username");
+    if (username) {
+      document.getElementById("username").textContent = `Hoş geldin, ${username}`;
+    }
+
+    function selectAction(type) {
+      document.getElementById("amountOptions").style.display = "block";
+      console.log(type + " seçildi.");
+    }
+
+    function selectAmount(amount) {
+      alert(`${amount} TL ile oyun başlatılıyor...`);
+      // Masa yönlendirmesi
+      window.location.href = './klasikokey-masa.html';
+    }
+  </script>
+</body>
+</html>

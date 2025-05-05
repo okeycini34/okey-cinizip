@@ -1,0 +1,25 @@
+<form id="registerForm">
+  <input type="text" id="username" placeholder="Kullanıcı Adı" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Şifre" required>
+  <input type="password" id="confirmPassword" placeholder="Şifre Tekrar" required>
+  <button type="submit">Kayıt Ol</button>
+</form>
+
+<script src="/js/register.js"></script>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Kayıt Ol</title>
+</head>
+<body>
+  <h1>Kayıt Ol</h1>
+  <form action="/lobby" method="GET">
+    <input type="text" placeholder="Kullanıcı Adı" required />
+    <input type="password" placeholder="Şifre" required />
+    <button type="submit">Kayıt Ol</button>
+  </form>
+  <a href="/">Zaten hesabım var</a>
+</body>
+</html>

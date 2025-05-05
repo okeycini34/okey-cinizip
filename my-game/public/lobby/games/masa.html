@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Okey Masası</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("lobby/games/assets/okey-odasi.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    .masa-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .istaka {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: auto;
+      z-index: 2;
+    }
+
+    .tas {
+      position: absolute;
+      width: 40px;
+      height: auto;
+      cursor: grab;
+      z-index: 3;
+      transition: transform 0.2s ease;
+    }
+
+    .tas:active {
+      cursor: grabbing;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="masa-container">
+    <!-- Istaka -->
+    <img src="lobby/games/assets/istaka.png" class="istaka" alt="Istaka" />
+
+    <!-- Örnek Taşlar (manuel pozisyonlu) -->
+    <img src="lobby/games/assets/okey-tasi-1.png" class="tas" style="bottom: 110px; left: calc(50% - 260px);" />
+    <img src="lobby/games/assets/okey-tasi-2.png" class="tas" style="bottom: 110px; left: calc(50% - 210px);" />
+    <img src="lobby/games/assets/okey-tasi-3.png" class="tas" style="bottom: 110px; left: calc(50% - 160px);" />
+    <!-- Devamı eklenebilir -->
+
+  </div>
+
+  <script>
+    // Basit sürükle-bırak desteği
+    document.querySelectorAll('.tas').forEach(tas => {
+      tas.onmousedown = function(event) {
+        tas.style.zIndex = 1000;
+        function moveAt(pageX, pageY) {
+          tas.style.left = pageX - tas.offsetWidth / 2 + 'px';
+          tas.style.top = pageY - tas.offsetHeight / 2 + 'px';
+        }
+
+        moveAt(event.pageX, event.pageY);
+
+        function onMouseMove(event) {
+          moveAt(event.pageX, event.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        tas.onmouseup = function() {
+          document.removeEventListener('mousemove', onMouseMove);
+          tas.onmouseup = null;
+        };
+      };
+
+      tas.ondragstart = function() {
+        return false;
+      };
+    });
+  </script>
+</body>
+</html>

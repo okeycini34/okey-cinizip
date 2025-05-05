@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Okey Masası</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #2e7d32; /* Yeşil masa */
+      font-family: Arial, sans-serif;
+    }
+
+    /* ISTAKA */
+    .rack {
+      width: 900px;
+      height: 100px;
+      background: linear-gradient(to top, #8d6e63, #5d4037); /* Ahşap efekti */
+      border-radius: 12px;
+      padding: 8px;
+      display: flex;
+      gap: 6px;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* TAŞLAR */
+    .tile {
+      width: 50px;
+      height: 70px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      user-select: none;
+      cursor: grab;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .kirmizi { background-color: #e53935; }
+    .sari    { background-color: #fdd835; color: #000; }
+    .mavi    { background-color: #1e88e5; }
+    .siyah   { background-color: #212121; }
+
+    .joker {
+      background: repeating-linear-gradient(
+        45deg,
+        #ff4081,
+        #ff4081 10px,
+        #f50057 10px,
+        #f50057 20px
+      );
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="rack" id="rack">
+    <!-- Taşlar burada otomatik eklenecek -->
+  </div>
+
+  <script>
+    const rack = document.getElementById('rack');
+    const colors = ['kirmizi', 'sari', 'mavi', 'siyah'];
+
+    function createTile(color, number) {
+      const tile = document.createElement('div');
+      tile.classList.add('tile', color);
+      tile.draggable = true;
+      tile.textContent = number;
+      tile.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', '');
+        tile.classList.add('dragging');
+      });
+      tile.addEventListener('dragend', () => {
+        tile.classList.remove('dragging');
+      });
+      return tile;
+    }
+
+    // Sürükle-bırak sistemi
+    rack.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterElement = getDragAfterElement(rack, e.clientX);
+      const dragging = document.querySelector('.dragging');
+      if (afterElement == null) {
+        rack.appendChild(dragging);
+      } else {
+        rack.insertBefore(dragging, afterElement);
+      }
+    });
+
+    function getDragAfterElement(container, x) {
+      const draggableElements = [...container.querySelectorAll('.tile:not(.dragging)')];
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = x - box.left - box.width / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    // Taşları ekle
+    for (let i = 1; i <= 14; i++) {
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const number = Math.ceil(Math.random() * 13);
+      const tile = createTile(color, number);
+      rack.appendChild(tile);
+    }
+
+    // Joker taşı
+    const joker = document.createElement('div');
+    joker.classList.add('tile', 'joker');
+    joker.textContent = '*';
+    joker.draggable = true;
+    rack.appendChild(joker);
+  </script>
+</body>
+</html>
